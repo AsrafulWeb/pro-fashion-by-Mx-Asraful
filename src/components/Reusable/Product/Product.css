@@ -1,0 +1,34 @@
+.productComp{
+}
+
+.productComp:hover{
+}
+
+.productImagesAndOptions{
+    position: relative;
+}
+
+.productComp:hover .productOptions{
+    transition: 0.3s;
+    opacity: 1;
+}
+
+.productOptions{
+    margin-top: -30px;
+    background-color: #fff;
+    width: 100%;
+    height: 30px;
+    padding: 3px 7px;
+    position: absolute;
+    display: block;
+    transition: 0.3s;
+    opacity: 0;
+}
+
+.productOptions span{
+    cursor: pointer;
+}
+
+.productOptions span:hover{
+    color: rgb(75, 75, 75)
+}
