@@ -1,0 +1,15 @@
+.cart-order-summary{
+    margin: 50px 0 0 0;
+    padding: 0;
+    border-radius: 5px;
+    box-shadow: 0px 0px 20px #aaa;
+    padding-bottom: 30px;
+}
+
+.cart-order-summary-title{
+    border-radius: 5px 5px 0 0;
+}
+
+.cart-order-summary-options > div{
+    font-family: 'Barlow Condensed', sans-serif;
+}

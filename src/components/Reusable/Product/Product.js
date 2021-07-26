@@ -6,7 +6,7 @@ const Product = ({productData}) => {
     return (
         <div className="productComp">
             <div className="productImagesAndOptions">
-                <Link to={"/product/"+productData?.id}>
+                <Link to={"/product/" + productData.for + "/"  + productData.categories + "/" + productData?.id}>
                     <img src={productData?.imgs[0]} alt="" className="img-fluid" />
                 </Link>
                 <div className="productOptions d-flex">
@@ -25,7 +25,7 @@ const Product = ({productData}) => {
             </div>
             <div className="productContent mt-3">
                 <div className="product-content-left me-auto">
-                    <Link to={"/product/"+productData?.id} className="h6 text-dark" style={{textDecoration: "none"}}>{productData?.title}</Link>
+                    <Link to={"/product/" + productData.for + "/" + productData.categories + "/" + productData?.id} className="h6 text-dark" style={{textDecoration: "none"}}>{productData?.title}</Link>
                 </div>
                 <div className="product-content-right d-flex">
                     <div className="h6 text-secondary">$ {productData?.price}.00</div>

@@ -13,22 +13,31 @@ import HomeMessage from './components/Home/HomeMessage/HomeMessage';
 import SomeFeaturedProducts from './components/Home/SomeFeaturedProducts/SomeFeaturedProducts';
 import ProductDetail from './components/ProductDetail/ProductDetail';
 import GenderPage from './components/GenderPage/GenderPage';
+import Cart from './components/Cart/Cart';
+import { AuthContextProvider } from './auth/auth';
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <div>
+        <AuthContextProvider>
           <Switch>
-            <Route path="/product/:pdId">
+            <Route path="/product/:for/:cate/:pdId">
               <Header />
               <ProductDetail />
             </Route>
+            <Route path="/cart">
+              <Header />
+              <Cart />
+            </Route>
+            <Route path="/my-account">
+              <Header />
+            </Route>
             <Route path="/men">
-              <GenderPage gender="men"/>
+              <GenderPage gender="men" />
             </Route>
             <Route path="/women">
-              <GenderPage gender="women"/>
+              <GenderPage gender="women" />
             </Route>
             <Route exact path="/">
               <Header home={true} />
@@ -42,7 +51,7 @@ function App() {
               <Error />
             </Route>
           </Switch>
-        </div>
+        </AuthContextProvider>
       </Router>
     </div>
   );
