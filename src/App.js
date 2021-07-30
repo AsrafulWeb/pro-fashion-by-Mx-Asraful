@@ -14,7 +14,8 @@ import SomeFeaturedProducts from './components/Home/SomeFeaturedProducts/SomeFea
 import ProductDetail from './components/ProductDetail/ProductDetail';
 import GenderPage from './components/GenderPage/GenderPage';
 import Cart from './components/Cart/Cart';
-import { AuthContextProvider } from './auth/auth';
+import { AuthContextProvider, PrivateRoute } from './auth/auth';
+import Login from './components/Login/Login';
 
 function App() {
   return (
@@ -22,6 +23,10 @@ function App() {
       <Router>
         <AuthContextProvider>
           <Switch>
+            <Route path="/login">
+              <Header />
+              <Login />
+            </Route>
             <Route path="/product/:for/:cate/:pdId">
               <Header />
               <ProductDetail />
@@ -30,9 +35,9 @@ function App() {
               <Header />
               <Cart />
             </Route>
-            <Route path="/my-account">
+            <PrivateRoute path="/my-account">
               <Header />
-            </Route>
+            </PrivateRoute>
             <Route path="/men">
               <GenderPage gender="men" />
             </Route>
