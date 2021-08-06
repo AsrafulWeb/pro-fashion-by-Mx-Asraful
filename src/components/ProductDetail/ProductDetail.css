@@ -59,12 +59,6 @@
     max-height: 400px !important;
 }
 
-.productDetailText {
-    position: sticky;
-    left: 70%;
-    top: 10%;
-}
-
 .quantityUpDownBtn{
     width: 32px;
 }

@@ -4,8 +4,7 @@ import Product from '../Reusable/Product/Product';
 import loader from './../../Logo/loader.svg';
 import './ProductDetail.css'
 
-
-const ProductDetail = ({ modal, modalId }) => {
+const ProductDetail = ({ modal, modalData }) => {
 
     const [product, setProduct] = useState(null)
     const [image, setImage] = useState(null)
@@ -18,12 +17,8 @@ const ProductDetail = ({ modal, modalId }) => {
 
     useEffect(() => {
         if (modal) {
-            fetch(`http://localhost:3001/product/${modalId}`)
-                .then(res => res.json())
-                .then(data => {
-                    setProduct(data)
-                    setImage(data.imgs[0])
-                })
+            setProduct(modalData)
+            setImage(modalData?.imgs[0])
         } else {
             fetch(`http://localhost:3001/product/${pdId}`)
                 .then(res => res.json())
@@ -43,8 +38,8 @@ const ProductDetail = ({ modal, modalId }) => {
                     }
                 })
         }
-    }, [pdId, modal])
-
+    }, [pdId, modalData, modal])
+    
     return (
         <div className="productDetailComp">
             <div className={modal ? " " : "container"}>
@@ -188,7 +183,9 @@ const ProductDetail = ({ modal, modalId }) => {
                         </>
                         :
                         <div className="productDetailLoader text-center">
+                            <br /><br /><br /><br /><br /><br />
                             <img style={{ width: "60px" }} src={loader} alt="" className="img-fluid mt-5" />
+                            <br /><br /><br /><br /><br /><br />
                         </div>
                 }
             </div>

@@ -1,12 +1,16 @@
 .productComp{
-}
-
-.productComp:hover{
-}
-
-.productImagesAndOptions{
     position: relative;
+    min-height: 220px;
 }
+
+.productImagesAndOptions {
+    min-height: 220px;
+}
+
+.productImagesAndOptions > a{
+    min-height: 220px;
+}
+
 
 .productComp:hover .productOptions{
     transition: 0.3s;

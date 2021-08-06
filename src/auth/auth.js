@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from "../firebase.config";
@@ -39,7 +39,7 @@ export const PrivateRoute = ({ children, ...rest }) => {
 
 const Auth = () => {
 
-    const [user, setUser] = useState()
+    const [user, setUser] = useState(null)
     const [error, setError] = useState(false)
 
     // Filter user data
@@ -68,14 +68,41 @@ const Auth = () => {
             })
             .catch(err => {
                 setError(true)
+                console.log(err.message)
             })
     }
+
+    // LogOut
+    const logOut = () => {
+        firebase.auth().signOut()
+            .then(res => {
+                setUser(null)
+                setError(false)
+            })
+            .catch(err => {
+                setError(true)
+            });
+    }
+
+    // Menage Users Account Data
+    useEffect(() => {
+        firebase.auth().onAuthStateChanged(function (usr) {
+            if (usr) {
+                const currentUser = filterUser(usr)
+                setUser(currentUser)
+            } else {
+
+            }
+        });
+    }, [])
+
 
     return {
         user,
         error,
         emailSignUp,
         emailSignIn,
-        googleSignIn
+        googleSignIn,
+        logOut
     }
 }

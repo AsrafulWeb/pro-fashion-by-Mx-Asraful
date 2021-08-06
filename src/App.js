@@ -16,46 +16,55 @@ import GenderPage from './components/GenderPage/GenderPage';
 import Cart from './components/Cart/Cart';
 import { AuthContextProvider, PrivateRoute } from './auth/auth';
 import Login from './components/Login/Login';
+import Dashboard from './components/Dashboard/Dashboard';
+import CategoriesProducts from './components/CategoriesProducts/CategoriesProducts';
+import Footer from './components/Footer/Footer';
+import { CartContextProvider } from './CartContext/CartContext';
 
 function App() {
   return (
     <div className="App">
       <Router>
         <AuthContextProvider>
-          <Switch>
-            <Route path="/login">
-              <Header />
-              <Login />
-            </Route>
-            <Route path="/product/:for/:cate/:pdId">
-              <Header />
-              <ProductDetail />
-            </Route>
-            <Route path="/cart">
-              <Header />
-              <Cart />
-            </Route>
-            <PrivateRoute path="/my-account">
-              <Header />
-            </PrivateRoute>
-            <Route path="/men">
-              <GenderPage gender="men" />
-            </Route>
-            <Route path="/women">
-              <GenderPage gender="women" />
-            </Route>
-            <Route exact path="/">
-              <Header home={true} />
-              <Banner />
-              <ProductsSector />
-              <HomeMessage />
-              <SomeFeaturedProducts />
-            </Route>
-            <Route path="*">
-              <Header />
-              <Error />
-            </Route>
-          </Switch>
+          <CartContextProvider>
+            <Header />
+            <Switch>
+              <Route path="/login">
+                <Login />
+              </Route>
+              <Route path="/product/:for/:cate/:pdId">
+                <ProductDetail />
+              </Route>
+              <Route path="/cart">
+                <Cart />
+              </Route>
+              <PrivateRoute path="/my-account">
+                <Dashboard />
+              </PrivateRoute>
+              <Route path="/men/:cate">
+                <CategoriesProducts men={true} />
+              </Route>
+              <Route path="/women/:cate">
+                <CategoriesProducts men={false} />
+              </Route>
+              <Route path="/men">
+                <GenderPage gender="men" />
+              </Route>
+              <Route path="/women">
+                <GenderPage gender="women" />
+              </Route>
+              <Route exact path="/">
+                <Banner />
+                <ProductsSector />
+                <HomeMessage />
+                <SomeFeaturedProducts />
+              </Route>
+              <Route path="*">
+                <Error />
+              </Route>
+            </Switch>
+            <Footer />
+          </CartContextProvider>
         </AuthContextProvider>
       </Router>
     </div>
