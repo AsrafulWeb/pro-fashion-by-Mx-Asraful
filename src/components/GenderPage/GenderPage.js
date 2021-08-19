@@ -11,7 +11,7 @@ const GenderPage = ({ gender }) => {
     const path = window.location.pathname
 
     useEffect(() => {
-        fetch(`http://localhost:3001/categories/${gender}`)
+        fetch(`https://arcane-sierra-30035.herokuapp.com/categories/${gender}`)
             .then(res => res.json())
             .then(data => {
                 setGenderCategories(data)

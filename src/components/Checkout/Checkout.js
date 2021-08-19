@@ -43,7 +43,7 @@ const Checkout = () => {
 
     // Get all districts data
     useEffect(() => {
-        fetch('http://localhost:3001/districts')
+        fetch('https://arcane-sierra-30035.herokuapp.com/districts')
             .then(res => res.json())
             .then(data => setBdDistricts(data))
     }, [])
@@ -64,7 +64,7 @@ const Checkout = () => {
 
     // Add a users address
     const addAnAddress = (e) => {
-        fetch('http://localhost:3001/add-address', {
+        fetch('https://arcane-sierra-30035.herokuapp.com/add-address', {
             method: "post",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -92,7 +92,7 @@ const Checkout = () => {
 
     // get users address
     useEffect(() => {
-        fetch(`http://localhost:3001/address/${user?.email}`)
+        fetch(`https://arcane-sierra-30035.herokuapp.com/address/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 if (data.length > 0) {
@@ -113,7 +113,7 @@ const Checkout = () => {
 
     // Prosed To Pay
     const prossedToPay = () => {
-        
+
     }
 
     return (
@@ -144,7 +144,7 @@ const Checkout = () => {
                                                 {
                                                     userAddressValue.map(dt => (
                                                         <div className={selectedAddress && selectedAddress === dt._id ? "card mb-4 addressActive" : "card mb-4"} id={"addressItem" + dt._id} style={{ cursor: "pointer" }} onClick={() => setSelectedAddress(dt._id)}>
-                                                            <div class="modal fade checkoutAddressRemoveAlert mt-5" id={"addressDeleteModal" + userAddressValue.indexOf(dt)} data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                            <div class="modal fade checkoutAddressRemoveAlert mt-5" id={"addressDeleteModal" + userAddressValue?.indexOf(dt)} data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                                                 <div class="modal-dialog">
                                                                     <div class="modal-content">
                                                                         <div className="text-center mt-5">
@@ -175,7 +175,7 @@ const Checkout = () => {
                                                                     </div>
                                                                 </div>
                                                                 <div className="col-1 mt-2 ms-3">
-                                                                    <button className="btn btn-outline-warning btn-sm" data-bs-toggle="modal" data-bs-target={"#addressDeleteModal" + userAddressValue.indexOf(dt)}>
+                                                                    <button className="btn btn-outline-warning btn-sm" data-bs-toggle="modal" data-bs-target={"#addressDeleteModal" + userAddressValue?.indexOf(dt)}>
                                                                         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
                                                                             <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
                                                                         </svg>
@@ -332,7 +332,7 @@ const Checkout = () => {
                                                                                             <h6 className="ms-2 text-warning">${dt?.price * dt?.qty}.00</h6>
                                                                                         </div>
                                                                                         <div className="">
-                                                                                            <div class="modal fade checkoutItemRemoveModal mt-5" id={"checkoutItemDeleteModal" + userAddressValue.indexOf(dt)} data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                                                            <div class="modal fade checkoutItemRemoveModal mt-5" id={"checkoutItemDeleteModal" + userAddressValue?.indexOf(dt)} data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                                                                                 <div class="modal-dialog">
                                                                                                     <div class="modal-content">
                                                                                                         <div className="text-center mt-5">
@@ -345,7 +345,7 @@ const Checkout = () => {
                                                                                                     </div>
                                                                                                 </div>
                                                                                             </div>
-                                                                                            <button className="btn btn-outline-warning btn-sm checkoutItemDeleteBtn ms-4"  data-bs-toggle="modal" data-bs-target={"#checkoutItemDeleteModal" + userAddressValue.indexOf(dt)}>
+                                                                                            <button className="btn btn-outline-warning btn-sm checkoutItemDeleteBtn ms-4"  data-bs-toggle="modal" data-bs-target={"#checkoutItemDeleteModal" + userAddressValue?.indexOf(dt)}>
                                                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
                                                                                                     <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
                                                                                                 </svg>

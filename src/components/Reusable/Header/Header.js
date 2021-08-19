@@ -16,7 +16,7 @@ const Header = () => {
     const path = useLocation()
 
     useEffect(() => {
-        fetch(`http://localhost:3001/categories`)
+        fetch(`https://arcane-sierra-30035.herokuapp.com/categories`)
             .then(res => res.json())
             .then(data => {
                 setCategories(data)
