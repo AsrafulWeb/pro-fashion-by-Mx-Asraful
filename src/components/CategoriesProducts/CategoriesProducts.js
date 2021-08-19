@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Product from '../Reusable/Product/Product';
-import loader from './../../Logo/loader.svg'
 import './CategoriesProducts.css';
 
 const CategoriesProducts = ({ men }) => {
@@ -63,7 +62,9 @@ const CategoriesProducts = ({ men }) => {
                         :
                         <div className="categoriesProductsLoader">
                             <div className="text-center">
-                                <img src={loader} style={{width: "50px", marginTop: "32vh", marginBottom: "32vh"}} alt="" className="img-fluid" />
+                                <div class="spinner-border text-secondary" style={{margin: "200px 0"}} role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
                             </div>
                         </div>
                 }

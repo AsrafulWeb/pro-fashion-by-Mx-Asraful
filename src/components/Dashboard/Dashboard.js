@@ -56,7 +56,7 @@ const Dashboard = () => {
                                                 </div>
                                                 <h4 className="mt-3">{user?.name}</h4>
                                                 <span className="mt-3 mb-5">{user?.email}</span><br /><br />
-                                                <button onClick={logOut} className="btn btn-sm btn-danger">Sign Out</button>
+                                                <button onClick={logOut} className="btn btn-sm px-3 btn-outline-danger">Sign Out</button>
                                                 <br /><br /><br /><br /><br />
                                             </div>
                                         </div>
@@ -70,7 +70,7 @@ const Dashboard = () => {
                                                 <br /><br /><br /><br /><br /><br />
                                                 <div className="text-center">
                                                     <span>Sorry you don't have any order.</span><br /><br />
-                                                    <Link to="/" className="btn btn-success btn-sm">Order Now</Link>
+                                                    <Link to="/" className="btn btn-outline-success px-3 btn-sm">Order Now</Link>
                                                 </div>
                                                 <br /><br /><br /><br /><br /><br />
                                             </div>

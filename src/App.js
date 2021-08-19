@@ -14,12 +14,13 @@ import SomeFeaturedProducts from './components/Home/SomeFeaturedProducts/SomeFea
 import ProductDetail from './components/ProductDetail/ProductDetail';
 import GenderPage from './components/GenderPage/GenderPage';
 import Cart from './components/Cart/Cart';
-import { AuthContextProvider, PrivateRoute } from './auth/auth';
+import { AuthContextProvider, PrivateRoute, PrivateRouteForCheckout } from './auth/auth';
 import Login from './components/Login/Login';
 import Dashboard from './components/Dashboard/Dashboard';
 import CategoriesProducts from './components/CategoriesProducts/CategoriesProducts';
 import Footer from './components/Footer/Footer';
 import { CartContextProvider } from './CartContext/CartContext';
+import Checkout from './components/Checkout/Checkout';
 
 function App() {
   return (
@@ -40,6 +41,9 @@ function App() {
               </Route>
               <PrivateRoute path="/my-account">
                 <Dashboard />
+              </PrivateRoute>
+              <PrivateRoute for="checkout" path="/checkout">
+                <Checkout />
               </PrivateRoute>
               <Route path="/men/:cate">
                 <CategoriesProducts men={true} />

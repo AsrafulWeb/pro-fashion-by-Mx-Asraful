@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Product from '../../Reusable/Product/Product';
-import loader from './../../../Logo/loader.svg'
 import './SomeFeaturedProducts.css'
 
 const SomeFeaturedProducts = () => {
@@ -46,7 +45,9 @@ const SomeFeaturedProducts = () => {
                             </>
                             :
                             <div className="hpLoader text-center my-5">
-                                <img style={{width: "60px"}} src={loader} alt="" className="" />
+                                <div class="spinner-border text-secondary" style={{margin: "58px 0"}} role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
                             </div>
                     }
                 </div>

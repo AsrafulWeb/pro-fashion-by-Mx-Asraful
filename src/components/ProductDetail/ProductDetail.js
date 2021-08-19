@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useCart } from '../../CartContext/CartContext';
 import Product from '../Reusable/Product/Product';
-import loader from './../../Logo/loader.svg';
 import './ProductDetail.css'
 
 const ProductDetail = ({ modal, modalData }) => {
@@ -9,8 +9,11 @@ const ProductDetail = ({ modal, modalData }) => {
     const [product, setProduct] = useState(null)
     const [image, setImage] = useState(null)
     const [carouselActive, setCarouselActive] = useState(0)
-    const [quantity, setQuantity] = useState(0)
+    const [quantity, setQuantity] = useState(1)
+    const [size, setSize] = useState(null)
     const [relatedProducts, setRelatedProducts] = useState(null)
+
+    const { setItem } = useCart()
 
     const { pdId } = useParams()
     const path = window.location.pathname
@@ -25,6 +28,7 @@ const ProductDetail = ({ modal, modalData }) => {
                 .then(data => {
                     setProduct(data)
                     setImage(data.imgs[0])
+                    setSize(data?.sizes ? data.sizes[0] : null)
                     if (modal) {
 
                     } else {
@@ -39,9 +43,43 @@ const ProductDetail = ({ modal, modalData }) => {
                 })
         }
     }, [pdId, modalData, modal])
-    
+
+    // Add item in cart
+    const addItemInCart = () => {
+        setItem({
+            name: product.title,
+            price: product.price,
+            for: product.for,
+            categories: product.categories,
+            id: product.id,
+            img: product.imgs[0],
+            qty: quantity,
+            size: product?.sizes ? size : null
+        })
+    }
+
+    console.log(size)
+
+
     return (
         <div className="productDetailComp">
+            <div className="container">
+                {/*  */}
+                <div class="position-fixed bottom-0 end-0 p-3" style={{ zIndex: "100000000" }}>
+                    <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="toast-header">
+                            <img src="..." class="rounded me-2" alt="..." />
+                            <strong class="me-auto">Bootstrap</strong>
+                            <small>11 mins ago</small>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body">
+                            Hello, world! This is a toast message.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div className={modal ? " " : "container"}>
                 {
                     product ?
@@ -111,7 +149,7 @@ const ProductDetail = ({ modal, modalData }) => {
                                             product?.sizes === null ? "" :
                                                 <div className="productDetailSizes d-flex mt-4">
                                                     <h4>Sizes: </h4>
-                                                    <select class="ms-2 form-select form-select-sm" style={{ width: "35%" }} aria-label="Default select example">
+                                                    <select onChange={(e) => setSize(e.target.value)} class="ms-2 form-select form-select-sm" style={{ width: "35%" }} aria-label="Default select example">
                                                         {
                                                             product?.sizes.map(dt => (
                                                                 <option value={dt}>{dt}</option>
@@ -134,7 +172,7 @@ const ProductDetail = ({ modal, modalData }) => {
                                                     </svg>
                                                 </button>
                                             </div>
-                                            <button className="product-detail-add-cart-btn">
+                                            <button onClick={addItemInCart} className="product-detail-add-cart-btn">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
                                                     <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
                                                 </svg>
@@ -174,7 +212,9 @@ const ProductDetail = ({ modal, modalData }) => {
                                                 :
                                                 <div className="relatedProductsLoader my-5">
                                                     <div className="text-center py-5">
-                                                        <img src={loader} style={{ width: "40px" }} alt="" className="img-fluid" />
+                                                        <div class="spinner-border text-secondary" role="status">
+                                                            <span class="visually-hidden">Loading...</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                         }
@@ -183,9 +223,9 @@ const ProductDetail = ({ modal, modalData }) => {
                         </>
                         :
                         <div className="productDetailLoader text-center">
-                            <br /><br /><br /><br /><br /><br />
-                            <img style={{ width: "60px" }} src={loader} alt="" className="img-fluid mt-5" />
-                            <br /><br /><br /><br /><br /><br />
+                            <div class="spinner-border text-secondary" style={{ margin: "200px 0" }} role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
                         </div>
                 }
             </div>

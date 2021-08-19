@@ -16,21 +16,21 @@ const Banner = () => {
                         <img src="https://www.aarong.com/media/catalog/category/t_shoirt_men.jpg" class="d-block w-100" style={{ float: "right" }} alt="..." />
                         <div style={{ float: "left", textAlign: "left", top: "100px" }} class="carousel-caption d-none d-md-block">
                             <h3 className="text-dark mb-4">T-Shirt for men</h3>
-                            <Link to="/men/t-shirt" className="btn btn-outline-info btn-sm">See More</Link>
+                            <Link to="/men/t-shirt" className="btn btn-outline-info px-4 btn-sm">See More</Link>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <img src="https://www.aarong.com/media/catalog/category/Newarrivals_women_2.jpg" class="d-block w-100" style={{ float: "left" }} alt="..." />
                         <div style={{ float: "right", textAlign: "right", top: "100px" }} class="carousel-caption d-none d-md-block">
                             <h3 className="text-dark mb-4">Saree for women</h3>
-                            <Link to="/women/saree" className="btn btn-outline-info btn-sm">See More</Link>
+                            <Link to="/women/saree" className="btn btn-outline-info px-4 btn-sm">See More</Link>
                         </div>
                     </div>
                     <div class="carousel-item">
                         <img src="https://www.aarong.com/media/catalog/category/04.png" class="d-block w-100" style={{ float: "right" }} alt="..." />
                         <div style={{ float: "left", textAlign: "left", top: "100px" }} class="carousel-caption d-none d-md-block">
                             <h3 className="text-dark mb-4">Panjabi for men</h3>
-                            <Link to="/men/panjabi" className="btn btn-outline-info btn-sm">See More</Link>
+                            <Link to="/men/panjabi" className="btn btn-outline-info px-4 btn-sm">See More</Link>
                         </div>
                     </div>
                 </div>

@@ -2,7 +2,6 @@
     padding: 0;
     border-radius: 5px;
     box-shadow: 0px 0px 20px #aaa;
-    padding-bottom: 30px;
 }
 
 .cart-order-summary-title{
@@ -26,4 +25,17 @@
     border: 1px solid #aaa;
     padding: 4px 8px;
     width: 40px;
+}
+
+.popoverBtn{
+    border: none;
+    padding: 1px;
+    background: rgb(247, 247, 247);
+    border-radius: 40px;
+}
+
+.popoverBtn:hover{
+    padding: 0;
+    background: rgb(226, 226, 226);
+    border: 1px solid rgb(209, 209, 209);
 }

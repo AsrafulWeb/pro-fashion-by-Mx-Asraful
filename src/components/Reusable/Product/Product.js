@@ -10,19 +10,26 @@ const Product = ({ productData }) => {
 
     const addItemInCart = () => {
         setItem({
+            name: productData.title,
+            price: productData.price,
+            for: productData.for,
+            categories: productData.categories,
             id: productData.id,
+            img: productData.imgs[0],
+            num: cartItems?.length? cartItems?.length + 1 : 1,
             qty: 1,
-            num: cartItems?.length > 0 ? cartItems.length + 1 : 1,
-            size: productData?.sizes? productData?.sizes[0] : null
+            size: productData?.sizes ? productData?.sizes[0] : null
         })
     }
 
-    console.log(cartItems)
-
     return (
         <div className="productComp">
+
+            {/*  */}
+
+
             {/* Product Detail In Modal */}
-            <div class="modal fade" id={"productDetailModal"+productData?.id} tabindex="-1" aria-labelledby={"productDetailModalLabel"+productData?.id} aria-hidden="true">
+            <div class="modal fade" id={"productDetailModal" + productData?.id} tabindex="-1" aria-labelledby={"productDetailModalLabel" + productData?.id} aria-hidden="true">
                 <div class="modal-dialog modal-xl">
                     <div class="modal-content px-5 py-4">
                         <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -43,7 +50,7 @@ const Product = ({ productData }) => {
                         <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
                     </svg>
                 </span>
-                <span type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target={"#productDetailModal"+productData?.id} className="productFullScreen">
+                <span type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target={"#productDetailModal" + productData?.id} className="productFullScreen">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrows-fullscreen" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707zm4.344 0a.5.5 0 0 1 .707 0l4.096 4.096V11.5a.5.5 0 1 1 1 0v3.975a.5.5 0 0 1-.5.5H11.5a.5.5 0 0 1 0-1h2.768l-4.096-4.096a.5.5 0 0 1 0-.707zm0-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707zm-4.344 0a.5.5 0 0 1-.707 0L1.025 1.732V4.5a.5.5 0 0 1-1 0V.525a.5.5 0 0 1 .5-.5H4.5a.5.5 0 0 1 0 1H1.732l4.096 4.096a.5.5 0 0 1 0 .707z" />
                     </svg>
